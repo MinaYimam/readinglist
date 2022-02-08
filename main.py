@@ -14,8 +14,10 @@ def main():
         choice = ui.display_menu_get_choice(menu)
         action = menu.get_action(choice)
         action()
+        # if the user enters the lowercase q the program will pass 
         if choice == 'Q':
             break
+
 
 
 def create_menu():
@@ -26,9 +28,9 @@ def create_menu():
     menu.add_option('4', 'Show Read Books', show_read_books)
     menu.add_option('5', 'Show All Books', show_all_books)
     menu.add_option('6', 'Change Book Read Status', change_read)
-    menu.add_option('7', 'Delete Book', delete_book)
+    menu.add_option('7', 'Delete', delete_books)
     menu.add_option('Q', 'Quit', quit_program)
-
+    
     return menu
 
 
@@ -64,12 +66,17 @@ def change_read():
     new_read = ui.get_read_value()     
     book.read = new_read 
     book.save()
+    
+def delete_books():
+    try:
+        book_id = ui.get_book_id()
+        book = store.get_book_by_id(book_id)  
+        store._delete_book(book)
 
+    except :
+        print('This id book not found')
+    
 
-def delete_book():
-    book_id = ui.get_book_id()
-    book = store.get_book_by_id(book_id)
-    delete_books = ui.ask_question('Which book do you want to delete, PLease eneter the Book ID: ')
 
 
 def quit_program():

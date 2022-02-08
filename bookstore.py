@@ -1,6 +1,8 @@
 import sqlite3
 import os 
 
+"""Docstring are comments that helps the programmer better understand how the programs runs and it is functionlity"""
+
 db = os.path.join('database', 'books.db')
 
 class Book:
