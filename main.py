@@ -71,7 +71,14 @@ def change_read():
     else:
         print('There is no book found with that id!')
 
+def delete_books():
+    try:
+        book_id = ui.get_book_id()
+        book = store.get_book_by_id(book_id)  
+        store._delete_book(book)
 
+    except :
+        print('This id book not found')
 
 
 
