@@ -62,20 +62,16 @@ def search_book():
 
 def change_read():
     book_id = ui.get_book_id()
-    book = store.get_book_by_id(book_id)  
-    new_read = ui.get_read_value()     
-    book.read = new_read 
-    book.save()
-    
-def delete_books():
-    try:
-        book_id = ui.get_book_id()
-        book = store.get_book_by_id(book_id)  
-        store._delete_book(book)
 
-    except :
-        print('This id book not found')
-    
+    book = store.get_book_by_id(book_id)
+    if book:
+        new_read = ui.get_read_value()
+        book.read = new_read
+        book.save()
+    else:
+        print('There is no book found with that id!')
+
+
 
 
 

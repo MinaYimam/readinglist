@@ -190,10 +190,14 @@ class BookStore:
             
             if book_data:
                 book = Book(book_data['title'], book_data['author'], book_data['read'], book_data['rowid'])
-                    
-            con.close()            
+
+            else:
+                con.close()
+                return None
+            con.close()
             
-            return book 
+            return book
+
 
 
         def book_search(self, term):
