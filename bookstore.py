@@ -34,7 +34,9 @@ class Book:
 
     def __str__(self):
         read_status = 'have' if self.read else 'have not'
-        return f'ID {self.id}, Title: {self.title}, Author: {self.author}. You {read_status} read this book.'
+        return f'ID {self.id}, Title: {self.title}, Author: {self.author}. You {read_status} ' \
+               f'read {self.title} by {self.author}.'
+
 
 
     def __repr__(self):
